@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "lucasdotdev/laravel-database-queries-counter",
+    "description": "This package provides a simple trait to check how many queries a test suite has performed.",
     "keywords": [
-        ":vendor_name",
+        "lucasdotdev",
         "laravel",
-        ":package_slug"
+        "laravel-database-queries-counter"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/lucasdotdev/laravel-database-queries-counter",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Lucas Vinicius",
+            "email": "lucasvinicius211@yahoo.com",
             "role": "Developer"
         }
     ],
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "LucasDotDev\\DBQueriesCounter\\": "src",
+            "LucasDotDev\\DBQueriesCounter\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "LucasDotDev\\DBQueriesCounter\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -49,16 +49,18 @@
         "test-coverage": "vendor/bin/pest --coverage"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "LucasDotDev\\DBQueriesCounter\\DBQueriesCounterServiceProvider"
             ],
-            "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
-            }
+            "aliases": {}
         }
     },
     "minimum-stability": "dev",
