@@ -12,7 +12,7 @@ This package provides a simple way to check how many queries a test suite has pe
 You can install the package via composer:
 
 ```bash
-composer require lucasdotdev/laravel-database-queries-counter
+composer require lucasdotdev/laravel-database-queries-counter --dev
 ```
 
 You can publish the traits if you want to extend them:
