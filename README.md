@@ -1,19 +1,11 @@
-# This package provides a simple trait to check how many queries a test suite has performed.
+# Laravel Database Queries Counter
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lucasdotdev/laravel-database-queries-counter.svg?style=flat-square)](https://packagist.org/packages/lucasdotdev/laravel-database-queries-counter)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lucasdotdev/laravel-database-queries-counter/run-tests?label=tests)](https://github.com/lucasdotdev/laravel-database-queries-counter/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/lucasdotdev/laravel-database-queries-counter/Check%20&%20fix%20styling?label=code%20style)](https://github.com/lucasdotdev/laravel-database-queries-counter/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/lucasdotdev/laravel-database-queries-counter.svg?style=flat-square)](https://packagist.org/packages/lucasdotdev/laravel-database-queries-counter)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-database-queries-counter.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-database-queries-counter)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+This package provides a simple way to check how many queries a test suite has performed.
 
 ## Installation
 
@@ -23,37 +15,64 @@ You can install the package via composer:
 composer require lucasdotdev/laravel-database-queries-counter
 ```
 
-You can publish and run the migrations with:
+You can publish the traits if you want to extend them:
 
 ```bash
-php artisan vendor:publish --tag="laravel-database-queries-counter-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-
-```bash
-php artisan vendor:publish --tag="laravel-database-queries-counter-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="laravel-database-queries-counter-views"
+php artisan vendor:publish --tag="laravel-database-queries-counter-traits"
 ```
 
 ## Usage
 
+Add the `CountsQueries` trait to your test suite class to access the package methods, like `startCountingQueries`, `stopCountingQueries`, and `assertDatabaseQueriesCount`, as demonstrated below, where we assert that an index route does not perform N+1 queries to load the posts from a blog:
+
 ```php
-$DBQueriesCounter = new LucasDotDev\DBQueriesCounter();
-echo $DBQueriesCounter->echoPhrase('Hello, LucasDotDev!');
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\Post;
+use App\Models\User;
+use LucasDotDev\DBQueriesCounter\Traits\CountsQueries;
+use Tests\TestCase;
+
+class PostTest extends TestCase
+{
+    use CountsQueries;
+
+    public function testIndexPageDoesNotPerfomNPlusOneQueries()
+    {
+        Post::factory()->times(10)->create();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $this->startCountingQueries();
+
+        $response = $this->get(route('posts.index'));
+
+        $this->stopCountingQueries();
+
+        $response->assertSuccessful();
+        $this->assertDatabaseQueriesCount(1);
+    }
+}
+```
+
+You can also use the method `whileCountingQueries` to avoid having to control when to start and stop counting queries, as below, where we refactor the example above:
+
+```php
+    public function testIndexPageDoesNotPerfomNPlusOneQueries()
+    {
+        Post::factory()->times(10)->create();
+
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
+        $response = $this->whileCountingQueries(fn () => $this->get(route('posts.index')));
+
+        $response->assertSuccessful();
+        $this->assertDatabaseQueriesCount(1);
+    }
 ```
 
 ## Testing
