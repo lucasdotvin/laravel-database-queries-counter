@@ -25,11 +25,11 @@ trait CountsQueries
 
     public function startCountingQueries()
     {
-        if (!$this->hasDispatchedQueryCounter) {
+        if (! $this->hasDispatchedQueryCounter) {
             $this->dispatchQueryCounter();
         }
 
-        $this->isCountingQueries         = true;
+        $this->isCountingQueries = true;
         $this->hasDispatchedQueryCounter = true;
     }
 
