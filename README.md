@@ -7,6 +7,8 @@
 
 This package provides a simple way to check how many queries a test suite has performed.
 
+> It is important to keep in mind that merely controlling how many queries you perform on the database is not enough to ensure your application has a good performance. This package does not intend to do it, instead, it is thought to help you prevent common mistakes (like N+1 queries).
+
 ## Installation
 
 You can install the package via composer:
