@@ -1,6 +1,6 @@
 <?php
 
-namespace LucasDotDev\DBQueriesCounter;
+namespace LucasDotVin\DBQueriesCounter;
 
 use Illuminate\Support\ServiceProvider;
 

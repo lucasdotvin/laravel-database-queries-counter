@@ -1,6 +1,6 @@
 <?php
 
-namespace LucasDotDev\DBQueriesCounter\Traits;
+namespace LucasDotVin\DBQueriesCounter\Traits;
 
 use Illuminate\Support\Facades\DB;
 

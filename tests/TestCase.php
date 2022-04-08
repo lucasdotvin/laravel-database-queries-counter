@@ -1,9 +1,9 @@
 <?php
 
-namespace LucasDotDev\DBQueriesCounter\Tests;
+namespace LucasDotVin\DBQueriesCounter\Tests;
 
-use LucasDotDev\DBQueriesCounter\DBQueriesCounterServiceProvider;
-use LucasDotDev\DBQueriesCounter\Traits\CountsQueries;
+use LucasDotVin\DBQueriesCounter\DBQueriesCounterServiceProvider;
+use LucasDotVin\DBQueriesCounter\Traits\CountsQueries;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

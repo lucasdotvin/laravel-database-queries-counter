@@ -1,14 +1,14 @@
 {
-    "name": "lucasdotdev/laravel-database-queries-counter",
+    "name": "lucasdotvin/laravel-database-queries-counter",
     "description": "This package provides a simple trait to check how many queries a test suite has performed.",
     "keywords": [
-        "lucasdotdev",
+        "lucasdotvin",
         "laravel",
         "testing",
         "database",
         "laravel-database-queries-counter"
     ],
-    "homepage": "https://github.com/lucasdotdev/laravel-database-queries-counter",
+    "homepage": "https://github.com/lucasdotvin/laravel-database-queries-counter",
     "license": "MIT",
     "authors": [
         {
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "LucasDotDev\\DBQueriesCounter\\": "src",
-            "LucasDotDev\\DBQueriesCounter\\Database\\Factories\\": "database/factories"
+            "LucasDotVin\\DBQueriesCounter\\": "src",
+            "LucasDotVin\\DBQueriesCounter\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "LucasDotDev\\DBQueriesCounter\\Tests\\": "tests"
+            "LucasDotVin\\DBQueriesCounter\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -58,7 +58,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "LucasDotDev\\DBQueriesCounter\\DBQueriesCounterServiceProvider"
+                "LucasDotVin\\DBQueriesCounter\\DBQueriesCounterServiceProvider"
             ],
             "aliases": {}
         }
