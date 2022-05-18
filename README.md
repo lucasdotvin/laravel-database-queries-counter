@@ -1,9 +1,9 @@
 # Laravel Database Queries Counter
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/lucasdotdev/laravel-database-queries-counter.svg?style=flat-square)](https://packagist.org/packages/lucasdotdev/laravel-database-queries-counter)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lucasdotdev/laravel-database-queries-counter/run-tests?label=tests)](https://github.com/lucasdotdev/laravel-database-queries-counter/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/lucasdotdev/laravel-database-queries-counter/Check%20&%20fix%20styling?label=code%20style)](https://github.com/lucasdotdev/laravel-database-queries-counter/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/lucasdotdev/laravel-database-queries-counter.svg?style=flat-square)](https://packagist.org/packages/lucasdotdev/laravel-database-queries-counter)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/lucasdotvin/laravel-database-queries-counter.svg?style=flat-square)](https://packagist.org/packages/lucasdotvin/laravel-database-queries-counter)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/lucasdotvin/laravel-database-queries-counter/run-tests?label=tests)](https://github.com/lucasdotvin/laravel-database-queries-counter/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/lucasdotvin/laravel-database-queries-counter/Check%20&%20fix%20styling?label=code%20style)](https://github.com/lucasdotvin/laravel-database-queries-counter/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Total Downloads](https://img.shields.io/packagist/dt/lucasdotvin/laravel-database-queries-counter.svg?style=flat-square)](https://packagist.org/packages/lucasdotvin/laravel-database-queries-counter)
 
 This package provides a simple way to check how many queries a test suite has performed.
 
@@ -14,7 +14,7 @@ This package provides a simple way to check how many queries a test suite has pe
 You can install the package via composer:
 
 ```bash
-composer require lucasdotdev/laravel-database-queries-counter --dev
+composer require lucasdotvin/laravel-database-queries-counter --dev
 ```
 
 You can publish the traits if you want to extend them:
@@ -34,7 +34,7 @@ namespace Tests\Feature;
 
 use App\Models\Post;
 use App\Models\User;
-use LucasDotDev\DBQueriesCounter\Traits\CountsQueries;
+use LucasDotVin\DBQueriesCounter\Traits\CountsQueries;
 use Tests\TestCase;
 
 class PostTest extends TestCase
@@ -97,7 +97,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Lucas Vinicius](https://github.com/lucasdotdev)
+- [Lucas Vinicius](https://github.com/lucasdotvin)
 - [All Contributors](../../contributors)
 
 ## License
